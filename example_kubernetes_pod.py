@@ -35,7 +35,7 @@ compute_resource = {'request_cpu': '200m', 'request_memory': '1Gi', 'limit_cpu':
 with dag:
     k = KubernetesPodOperator(
         namespace=namespace,
-        image="python:3.7.5",
+        image="1.10.10.1-alpha2-python3.6",
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_id="task-one",
