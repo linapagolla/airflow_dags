@@ -43,5 +43,5 @@ with dag:
         cluster_context='docker-for-desktop', # is ignored when in_cluster is set to True
         config_file=config_file,
         resources=compute_resource,
-        is_delete_pod_operator=True,
+        is_delete_pod_operator=False,
         get_logs=True)
