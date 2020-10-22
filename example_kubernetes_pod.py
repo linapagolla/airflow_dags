@@ -37,6 +37,7 @@ with dag:
         namespace=namespace,
         image="1.10.10.1-alpha2-python3.6",
         cmds=['aws', 's3', 'ls'],
+        arguments=["echo", "10"],
         labels={"foo": "bar"},
         name='airflow-test-pod',
         task_id='task_one',
