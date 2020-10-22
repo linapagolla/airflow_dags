@@ -36,7 +36,7 @@ with dag:
     k = KubernetesPodOperator(
         namespace=namespace,
         image="1.10.10.1-alpha2-python3.6",
-        cmds=['echo', 'hello'; 'aws', 's3', 'ls'],
+        cmds=['aws', 's3', 'ls'],
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_id="task-one",
