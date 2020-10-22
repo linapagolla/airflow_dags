@@ -38,8 +38,8 @@ with dag:
         image="1.10.10.1-alpha2-python3.6",
         cmds=['aws', 's3', 'ls'],
         labels={"foo": "bar"},
-        name="airflow-test-pod",
-        task_id="task_one",
+        name='airflow-test-pod',
+        task_id='task_one',
         in_cluster=in_cluster, # if set to true, will look in the cluster, if false, looks for file
         cluster_context='docker-for-desktop', # is ignored when in_cluster is set to True
         config_file=config_file,
