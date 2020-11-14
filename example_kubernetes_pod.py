@@ -35,7 +35,8 @@ compute_resource = {'request_cpu': '200m', 'request_memory': '1Gi', 'limit_cpu':
 with dag:
     k = KubernetesPodOperator(
         namespace=namespace,
-        image="1.10.10.1-alpha2-python3.6",
+        #image="1.10.10.1-alpha2-python3.6",
+        image="ubuntu:16.04",
         cmds=['aws', 's3', 'ls'],
         arguments=["echo", "10"],
         labels={"foo": "bar"},
