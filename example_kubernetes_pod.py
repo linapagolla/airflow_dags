@@ -1,5 +1,6 @@
 from airflow import DAG
 from datetime import datetime, timedelta
+from airflow.contrib.kubernetes import secret
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 from airflow import configuration as conf
 
@@ -31,6 +32,8 @@ dag = DAG('example_kubernetes_pod',
 
 
 compute_resource = {'request_cpu': '200m', 'request_memory': '1Gi', 'limit_cpu': '200m', 'limit_memory': '1Gi'}
+
+secret_env = secret.Secret(deploy_type='env', deploy_target='POSTGRES_DB_HOST', secret='airflow-ciox-ls-db-lfsci', key='host')
 
 with dag:
     k = KubernetesPodOperator(
