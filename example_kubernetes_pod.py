@@ -42,7 +42,7 @@ with dag:
         image="apache/airflow:1.10.10.1-alpha2-python3.6",
         #image="ubuntu:16.04",
         #cmds=['pip', 'install', 'awscli', '--user'],
-        cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST"],
+        cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && printenv"],
         #arguments=["echo", "10"],
         labels={"foo": "bar"},
         name='airflow-test-pod',
