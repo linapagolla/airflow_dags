@@ -40,6 +40,7 @@ with dag:
         namespace=namespace,
         #image="1.10.10.1-alpha2-python3.6",
         image="apache/airflow:1.10.10.1-alpha2-python3.6",
+        secrets=['airflow-ciox-ls-db-lfsci'],
         #image="ubuntu:16.04",
         #cmds=['pip', 'install', 'awscli', '--user'],
         cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && printenv"],
