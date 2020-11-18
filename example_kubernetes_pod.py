@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from airflow.contrib.kubernetes import secret
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 from airflow import configuration as conf
+import os
 
 default_args = {
     'owner': 'airflow',
@@ -44,8 +45,8 @@ with dag:
         #cmds=['pip', 'install', 'awscli', '--user'],
         cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && printenv"],
         #arguments=["echo", "10"],
-        image_pull_secrets=["airflow-ciox-ls-db-lfsci"],
-        env_vars={'POSTGRES_DB_HOST': secret_env},
+        #image_pull_secrets=["airflow-ciox-ls-db-lfsci"],
+        env_vars={'POSTGRES_DB_HOST': os.environ['POSTGRES_DB_HOST']},
         labels={"foo": "bar"},
         name='airflow-test-pod',
         task_id='task_one',
