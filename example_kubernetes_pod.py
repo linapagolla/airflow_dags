@@ -45,7 +45,7 @@ with dag:
         #image="ubuntu:16.04",
         #cmds=['pip', 'install', 'awscli', '--user'], 
         #cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && mkdir /app/chasefile-export && cd  && aws s3 cp https://s3.console.aws.amazon.com/s3/buckets/ciox-195338640440-hsdp-dev-document-pipeline?region=us-east-1&prefix=airflow_code_base/chasefile-export/&showversions=false /app/chasefile-export && cd /app/chasefile-export && ls -ltr"],
-        cmds=["/bin/bash","-c","pip install awscli --user && pwd && ls -ltr && mkdir /app/chasefile-export && cd /app/chasefile-export && ls -ltr"],
+        cmds=["/bin/bash","-c","pip install awscli --user && pwd && ls -ltr && mkdir app/chasefile-export && cd app/chasefile-export && ls -ltr"],
         #arguments=["echo", "10"],
         #image_pull_secrets=["airflow-ciox-ls-db-lfsci"],
         env_vars=env_vars,
