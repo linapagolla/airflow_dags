@@ -35,6 +35,7 @@ dag = DAG('example_kubernetes_pod',
 compute_resource = {'request_cpu': '200m', 'request_memory': '1Gi', 'limit_cpu': '200m', 'limit_memory': '1Gi'}
 
 secret_env = secret.Secret(deploy_type='env', deploy_target='POSTGRES_DB_HOST', secret='airflow-ciox-ls-db-lfsci', key='host')
+env_vars={'POSTGRES_DB_HOST': os.environ['POSTGRES_DB_HOST'],'POSTGRES_DB_PORT':os.environ['POSTGRES_DB_PORT'],'POSTGRES_DB_USER':os.environ['POSTGRES_DB_USER'],'POSTGRES_DB_PWD':os.environ['POSTGRES_DB_PWD'],'POSTGRES_DB_NAME':os.environ['POSTGRES_DB_NAME']}
 
 with dag:
     k = KubernetesPodOperator(
@@ -42,11 +43,11 @@ with dag:
         #image="1.10.10.1-alpha2-python3.6",
         image="apache/airflow:1.10.10.1-alpha2-python3.6",
         #image="ubuntu:16.04",
-        #cmds=['pip', 'install', 'awscli', '--user'],
-        cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && printenv"],
+        #cmds=['pip', 'install', 'awscli', '--user'], 
+        cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && aws s3 cp https://s3.console.aws.amazon.com/s3/buckets/ciox-195338640440-hsdp-dev-document-pipeline?region=us-east-1&prefix=airflow_code_base/chasefile-export/&showversions=false /app/chasefile-export && cd /app/chasefile-export && ls -ltr"],
         #arguments=["echo", "10"],
         #image_pull_secrets=["airflow-ciox-ls-db-lfsci"],
-        env_vars={'POSTGRES_DB_HOST': os.environ['POSTGRES_DB_HOST']},
+        env_vars=env_vars,
         labels={"foo": "bar"},
         name='airflow-test-pod',
         task_id='task_one',
