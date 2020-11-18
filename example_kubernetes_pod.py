@@ -44,7 +44,7 @@ with dag:
         #cmds=['pip', 'install', 'awscli', '--user'],
         cmds=["/bin/bash","-c","pip install awscli --user && aws s3 ls && echo $POSTGRES_DB_HOST && printenv"],
         #arguments=["echo", "10"],
-        #secrets=["airflow-ciox-ls-db-lfsci"],
+        image_pull_secrets=["airflow-ciox-ls-db-lfsci"],
         env_vars={'POSTGRES_DB_HOST': secret_env},
         labels={"foo": "bar"},
         name='airflow-test-pod',
