@@ -45,7 +45,7 @@ with dag:
         #image="ubuntu:16.04",
         #cmds=['pip', 'install', 'awscli', '--user'], 
         #cmds=["/bin/bash","-c","pip install awscli --user && echo $POSTGRES_DB_HOST && mkdir chasefile-export && cd chasefile-export && pwd && ls -ltr && aws s3 cp s3://ciox-195338640440-hsdp-dev-document-pipeline/airflow_code_base/chasefile-export/chasefile-export.py  /opt/airflow/chasefile-export/chasefile-export.py && ls -ltr"],
-        cmds=["/bin/bash","-c","pip install awscli --user && echo $POSTGRES_DB_HOST && mkdir chasefile-export && cd chasefile-export && pwd && ls -ltr && aws s3 cp s3://ciox-195338640440-hsdp-dev-document-pipeline/airflow_code_base/chasefile-export/Initialize.sh  /opt/airflow/chasefile-export/Initialize.sh && ksh Initialize.ksh"],
+        cmds=["/bin/bash","-c","pip install awscli --user && echo $POSTGRES_DB_HOST && mkdir chasefile-export && cd chasefile-export && pwd && ls -ltr && aws s3 cp s3://ciox-195338640440-hsdp-dev-document-pipeline/airflow_code_base/chasefile-export/Initialize.sh  /opt/airflow/chasefile-export/Initialize.sh && ./Initialize.sh"],
         #cmds=["/bin/bash","-c","pip install awscli --user && pwd && ls -ltr && mkdir chasefile-export && cd chasefile-export && pwd && ls -ltr"],
         #arguments=["echo", "10"],
         #image_pull_secrets=["airflow-ciox-ls-db-lfsci"],
