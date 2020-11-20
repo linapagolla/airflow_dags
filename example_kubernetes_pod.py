@@ -42,7 +42,7 @@ with dag:
         namespace=namespace,
         #image="1.10.10.1-alpha2-python3.6",
         #image="apache/airflow:1.10.10.1-alpha2-python3.6",
-        image="lifesciences.docker.cioxhealth.com/ciox-ls-chasefile-export:latest",
+        image="lifesciences.docker.cioxhealth.com/ciox-ls-chasefile-export:db654379",
         #image="ubuntu:16.04",
         #cmds=['pip', 'install', 'awscli', '--user'], 
         #cmds=["/bin/bash","-c","pip install awscli --user && echo $POSTGRES_DB_HOST && mkdir chasefile-export && cd chasefile-export && pwd && ls -ltr && aws s3 cp s3://ciox-195338640440-hsdp-dev-document-pipeline/airflow_code_base/chasefile-export/chasefile-export.py  /opt/airflow/chasefile-export/chasefile-export.py && ls -ltr"],
