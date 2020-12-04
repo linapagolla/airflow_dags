@@ -40,7 +40,7 @@ env_vars={'POSTGRES_DB_HOST': os.environ['POSTGRES_DB_HOST'],'POSTGRES_DB_PORT':
 with dag:
     chasefile_export_failed = KubernetesPodOperator(
         namespace=namespace,
-        image="lifesciences.docker.cioxhealth.com/ciox-ls-chasefile-export:75724c36a",
+        image="lifesciences.docker.cioxhealth.com/ciox-ls-chasefile-export:75724c36",
         cmds=["python","./chasefile-export/chasefile-export2.py"],
         env_vars=env_vars,
         labels={"foo": "bar"},
