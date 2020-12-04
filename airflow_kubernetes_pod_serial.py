@@ -44,7 +44,7 @@ with dag:
         cmds=["python","./chasefile-export/chasefile-export.py"],
         env_vars=env_vars,
         labels={"foo": "bar"},
-        name='airflow-test-pod',
+        name='chasefile_export_failed',
         task_id='chasefile_export_failed',
         in_cluster=in_cluster, # if set to true, will look in the cluster, if false, looks for file
         cluster_context='docker-for-desktop', # is ignored when in_cluster is set to True
@@ -59,7 +59,7 @@ with dag:
         cmds=["python","./chasefile-export/chasefile-export.py"],
         env_vars=env_vars,
         labels={"foo": "bar"},
-        name='airflow-test-pod',
+        name='chasefile_export_passed',
         task_id='chasefile_export_passed',
         in_cluster=in_cluster, # if set to true, will look in the cluster, if false, looks for file
         cluster_context='docker-for-desktop', # is ignored when in_cluster is set to True
